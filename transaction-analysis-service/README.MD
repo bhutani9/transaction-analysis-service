@@ -1,0 +1,1 @@
+mvn spring-boot:run -Dspring-boot.run.arguments=C:\Users\deepa\Documents\test
