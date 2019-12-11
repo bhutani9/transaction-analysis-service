@@ -1,4 +1,4 @@
-Command to run the 
+Command to run the program - 
 mvn spring-boot:run
 
 Console Input : 
