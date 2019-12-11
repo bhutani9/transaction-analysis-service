@@ -1,20 +1,45 @@
 package com.me.bank.excerise.transactionanalysis.model;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.TimeZone;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.me.bank.excerise.transactionanalysis.util.CustomLocalDateTimeDeserializer;
+
+@Entity()
+@Table(name = "TRANSACTION")
 public class Transaction {
-	
+
+	@Id
+	@Column(name = "TRANSACTION_ID")
 	private String transactionId;
 	
+	@Column(name = "FROM_ACCOUNT_ID")
 	private String fromAccountId;
-	
+
+	@Column(name = "TO_ACCOUNT_ID")
 	private String toAccountId;
-	
+
+	@Column(name = "TRANSACTION_TYPE")
 	private String transactionType;
-	
+
+	@Column(name = "AMOUNT")
 	private Double amount;
-	
+
+	@Column(name = "RELATED_TRANSACTION")
 	private String relatedTransaction;
-	
-	private String createdAt;
+
+	//@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss" )
+	@JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
+	@Column(name = "CREATED_AT")
+	private LocalDateTime createdAt;
 
 	public String getTransactionId() {
 		return transactionId;
@@ -64,12 +89,21 @@ public class Transaction {
 		this.relatedTransaction = relatedTransaction;
 	}
 
-	public String getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", fromAccountId=" + fromAccountId + ", toAccountId="
+				+ toAccountId + ", transactionType=" + transactionType + ", amount=" + amount + ", relatedTransaction="
+				+ relatedTransaction + ", createdAt=" + createdAt + "]";
+	}
+	
+	
 
 }
