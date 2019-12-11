@@ -14,12 +14,5 @@ CSV File Path:
 
 
 
-As the second step please enter valid account number, fromDatetime and toDateTime to get transaction details.
-
-
-
-
-Test Case to validate the logic:
-com.me.bank.excerise.transactionanalysis.TransactionAnalysisServiceTest
-
+When you select option 2 - please enter valid account number, fromDatetime and toDateTime to get transaction details.
 
